@@ -76,12 +76,25 @@ function listarProduto() {
 
   };
 
-  function criarParagrafoModal(texto){
-     let conteinerPar = document.getElementById('modal_corpo')
-      let novoPar = document.createElement('p')
-      novoPar.textContent = texto
-      conteinerPar.appendChild(novoPar);
-  }
+  function criarParagrafoModal(texto) {
+    let conteinerPar = document.getElementById('modal_corpo');
+
+    // Verifica se já existe um parágrafo dentro do modal
+    let paragrafoExistente = conteinerPar.querySelector('p');
+
+    // Se o parágrafo já existir, remove ele
+    if (paragrafoExistente) {
+        paragrafoExistente.remove();
+    }
+
+    // Cria um novo parágrafo
+    let novoPar = document.createElement('p');
+    novoPar.textContent = texto;
+
+    // Adiciona o novo parágrafo ao modal
+    conteinerPar.appendChild(novoPar);
+}
+
 
   function limparBanco() {
     var store = getObjectStore(DB_STORE_NAME, 'readwrite');
